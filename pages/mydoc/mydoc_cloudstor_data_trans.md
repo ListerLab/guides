@@ -1,11 +1,14 @@
-Transferring data to and from CloudStor using the terminal
-================
-
-**Author: Sam Buckberry**  
-Created on Tue Oct 10 2020  
-Last compiled on Fri Dec 04 11:45:56 2020
-
------
+---
+title: "Transferring data to and from CloudStor using the terminal"
+tags: [IGV, browser, Google, Cloud]
+keywords: IGV, browser, google cloud
+summary: "How to use the command line to transfer and interact with data hosted on Google Cloud."
+sidebar: mydoc_sidebar
+folder: browser
+permalink: data-transfer-cloudstor.html
+author: Sam Buckberry
+last_updated: December 1, 2020
+---
 
 ### Preliminaries
 
