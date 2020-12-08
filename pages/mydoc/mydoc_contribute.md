@@ -30,7 +30,7 @@ In Github, click the **Clone or download** button, and then click **Download ZIP
 If you've never installed or run a Jekyll site locally on your computer, follow these instructions to install Jekyll:
 
 * [Install Jekyll on Mac](./mydoc_install_jekyll_on_mac)
-* [Install Jekyll on Windows][./mydoc_install_jekyll_on_windows]
+* [Install Jekyll on Windows](./mydoc_install_jekyll_on_windows)
 
 ### 3. Install Bundler
 
