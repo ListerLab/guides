@@ -27,8 +27,8 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Creating IGV web session with data hosted on Google Cloud
-      url: /igv_web_gcs.html
+    - title: Google Cloud data transfer using the terminal
+      url: /data-transfer-gcs.html
       output: web, pdf
       type: homepage
 
@@ -62,4 +62,12 @@ entries:
     folderitems:
     - title: Sidebar navigation
       url: /mydoc_sidebar_navigation.html
+      output: web, pdf
+
+  - title: Contribute
+    output: web, pdf
+
+    folderitems:
+    - title: How to contribute to these guides
+      url: /contribute.html
       output: web, pdf

@@ -36,9 +36,9 @@ exclude:
   - vendor
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_subject_line: Jekyll documentation theme
+#feedback_subject_line: Jekyll documentation theme
 
-#feedback_email: tomjoht@gmail.com
+#feedback_email:
 # used as a contact email for the Feedback link in the top navigation bar
 
 feedback_disable: true
@@ -109,7 +109,7 @@ sidebars:
 - product2_sidebar
 - other
 
-description: "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features."
+description: "Intended as documentation how-to guides to help get started quickly with many computational tasks in the Lister Lab.."
 # the description is used in the feed.xml file
 
 # needed for sitemap.xml file only
