@@ -6,6 +6,21 @@ layout: default
    <h1 class="post-title-main">{{ page.title }}</h1>
 </div>
 
+
+<header class="post-header">
+    <p {% if page.author %}<span>Author:</span><span itemprop="author" ><span itemprop="name"> {{ page.author }}
+        {% endif %}
+
+    </p>
+
+
+
+<div class="row">
+     <div class="col-lg-12 header">
+    {% if page.last_updated %}<span>Page last updated:</span> {{page.last_updated}}<br/>{% endif %} Site last generated: {{ site.time | date: "%b %-d, %Y"  }} <br />
+    </div>
+</div>
+
 {% if page.simple_map == true %}
 
 <script>
