@@ -14,39 +14,44 @@ entries:
       output: web, pdf
       type: homepage
 
-  - title: Web browser
+  - title: Server use best practices
     output: web, pdf
     folderitems:
 
-    - title: Creating IGV web session with data hosted on Google Cloud
-      url: /igv_web_gcs.html
+    - title: Data compression & clean-up
+      url: /compression.html
       output: web, pdf
-      type: homepage
 
-  - title: Data sharing
+  - title: Data transfer & sharing
     output: web, pdf
     folderitems:
 
-    - title: Google Cloud data transfer using the terminal
+    - title: Google Cloud data transfer
       url: /data-transfer-gcs.html
       output: web, pdf
       type: homepage
 
-  - title: Basespace
+    - title: CloudStor data transfer
+      url: /data-transfer-cloudstor.html
+      output: web, pdf
+      type: homepage
+
+  - title: Illumina Basespace
     output: web, pdf
     folderitems:
 
-    - title: 6.0 Release notes
-      url: /mydoc_release_notes_60.html
+    - title: Download data using basemount
+      url: /basemount.html
       output: web, pdf
 
-  - title: Best practices
+  - title: Genome browser
     output: web, pdf
     folderitems:
 
-    - title: About Ruby, Gems, Bundler, etc.
-      url: /mydoc_about_ruby_gems_etc.html
+    - title: IGV web sessions with Google Cloud
+      url: /igv_web_gcs.html
       output: web, pdf
+      type: homepage
 
   - title: Plotting data
     output: web, pdf
@@ -56,7 +61,7 @@ entries:
       url: /mydoc_pages.html
       output: web, pdf
 
-  - title: Genome index files
+  - title: Genome alignment indexes
     output: web, pdf
 
     folderitems:
