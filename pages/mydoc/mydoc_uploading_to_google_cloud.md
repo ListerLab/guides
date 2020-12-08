@@ -7,6 +7,7 @@ sidebar: mydoc_sidebar
 folder: browser
 permalink: data-transfer-gcs.html
 author: Sam Buckberry
+last_updated: December 1, 2020
 ---
 
 ### Preliminaries
