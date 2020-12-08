@@ -2,25 +2,16 @@
 title: "Creating IGV web browser sessions with data hosted on Google Cloud"
 tags: [IGV, browser, Google, Cloud]
 keywords: IGV, browser, google cloud
-last_updated: July 3, 2016
-summary: "A guide on creating IGV web sessions with data hosted on Google Cloud."
+last_updated: December 1, 2020
+summary: "The goal of this guide is to assist you to easily create web-hosted genome browser sessions that can be easily shared. To do this, we will be using the IGV web app with data hosted on Google Cloud. I have broken down the process of creating a browser session into four basic steps."
 sidebar: mydoc_sidebar
 folder: browser
 permalink: igv_web_gcs.html
+author: Sam Buckberry
+last_updated: December 1, 2020
 ---
 
-**Author: Sam Buckberry**  
-Created on Tue Dec 01 2020  
----
-
-The goal of this guide is to assist you to easily create web-hosted genome browser sessions that can be easily shared. To do this, we will be using the IGV web app with data hosted on Google Cloud. I have broken down the process of creating a browser session into four basic steps.
-
-1. Upload browser track data to Google Cloud.
-2. Create a Google Sheet with all the sample details for the browser tracks.
-3. Create the browser session file required by the IGV web app to load the session.
-4. Load the browser session file in IGV web app and share the session with others.
-
-### 1. Upload browser track data to Google Cloud
+### 1. Upload browser tracks to Google Cloud
 
 The first step is to upload your browser track files (bigwig, gtf, bed, etc) to Google Cloud. We use this platform as the files as be easily and quicky accessed by the IGV web application without any firewall or security issues.  
 
@@ -33,7 +24,7 @@ Once all of your data are uploaded to google cloud, and you have the links to yo
 
 ---
 
-### 2. Create a Google Sheet with all the sample details for the browser tracks
+### 2. Create a Google Sheet with browser track details
 
 
 See the example here for how to setup the Google Sheet.
@@ -134,7 +125,7 @@ Rscript make_igv_json.R "https://docs.google.com/spreadsheets/d/1MH99chxD6R3MH-B
 
 ---
 
-### 4. Load the browser session file in IGV web app and share the session with others
+### 4. Load the session in IGV and share with others
 
 Now, navigate to [https://igv.org/app/](https://igv.org/app/) in your browser. Google Chrome seems to work best for this application.
 
@@ -150,7 +141,7 @@ To share the session with others, simply click the `Share` tab in the browser an
 
 ---
 
-### Bringing it all together.
+### 5. The fast way once you are setup
 
 This is all it takes once you are setup with the Google Sheet in the right format, this is all it takes:
 
