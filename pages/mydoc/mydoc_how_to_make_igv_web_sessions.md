@@ -2,7 +2,6 @@
 title: "Creating IGV web browser sessions with data hosted on Google Cloud"
 tags: [IGV, browser, Google, Cloud]
 keywords: IGV, browser, google cloud
-last_updated: December 1, 2020
 summary: "The goal of this guide is to assist you to easily create web-hosted genome browser sessions that can be easily shared. To do this, we will be using the IGV web app with data hosted on Google Cloud. I have broken down the process of creating a browser session into four basic steps."
 sidebar: mydoc_sidebar
 folder: browser
