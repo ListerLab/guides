@@ -14,7 +14,7 @@ entries:
       output: web, pdf
       type: homepage
 
-  - title: Server use best practices
+  - title: Server use & best practices
     output: web, pdf
     folderitems:
 
