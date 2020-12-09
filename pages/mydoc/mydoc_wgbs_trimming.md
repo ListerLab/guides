@@ -1,3 +1,15 @@
+---
+title: "WGBS: Read trimming"
+summary: "The goal of this guide is take a brief look at adapter trimming of WGBS fastq files, the differences between different trimming approaches and the downstream impact on mapping."
+sidebar: mydoc_sidebar
+folder: browser
+permalink: wgbs-trimming.html
+author: Sam Buckberry
+last_updated: December 9, 2020
+---
+
+#### Recommended approach
+
 
 
 #### Trimmer benchmarking
