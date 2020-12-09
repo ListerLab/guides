@@ -1,6 +1,6 @@
 ---
 title: "Genome sequence, annotation and index file storage and use"
-summary: "The goal of this guide is to outline the best practices for storing and using genome alignment index files used by programs such as Bowtie, Star, BWA, etc."
+summary: "The goal of this guide is to outline the best practices for storing and using genome sequence, annotation and alignment index files."
 sidebar: mydoc_sidebar
 folder: browser
 permalink: genomes.html
