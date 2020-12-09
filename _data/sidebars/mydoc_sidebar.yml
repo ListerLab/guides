@@ -61,12 +61,12 @@ entries:
       url: /mydoc_pages.html
       output: web, pdf
 
-  - title: Genome alignment indexes
+  - title: Genome files
     output: web, pdf
 
     folderitems:
-    - title: Sidebar navigation
-      url: /mydoc_sidebar_navigation.html
+    - title: Sequence, index and annotation files
+      url: /genomes.html
       output: web, pdf
 
   - title: Contribute
