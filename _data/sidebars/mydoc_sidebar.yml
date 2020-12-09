@@ -18,6 +18,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Computational resources info
+      url: /servers.html
+      output: web, pdf
+
     - title: Data compression & clean-up
       url: /compression.html
       output: web, pdf
