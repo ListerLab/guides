@@ -77,6 +77,74 @@ sys	7m48.675s
 ```
 We can see here that by not supplying the adapter sequence, the algorithm takes >10 times longer to run for a highly comparable result.
 
+And with read merging
+
+```
+time bbmerge.sh qtrim=r \
+in1=test_WGBS_10M_reads_R1_trimmed_bbduk.fastq.gz \
+in2=test_WGBS_10M_reads_R2_trimmed_bbduk.fastq.gz \
+out=test_WGBS_10M_reads_trimmed_bbduk_merged.fastq.gz \
+outu1=test_WGBS_10M_reads_R1_trimmed_bbduk_unmerged.fastq.gz \
+outu2=test_WGBS_10M_reads_R2_trimmed_bbduk_unmerged.fastq.gz
+```
+
+```
+Pairs:               	9886490
+Joined:              	5031674   	50.894%
+Ambiguous:           	4852932   	49.087%
+No Solution:         	1884       	0.019%
+Too Short:           	0       	0.000%
+
+Avg Insert:          	156.9
+Standard Deviation:  	31.9
+Mode:                	167
+
+Insert range:        	35 - 215
+90th percentile:     	199
+75th percentile:     	183
+50th percentile:     	159
+25th percentile:     	133
+10th percentile:     	112
+
+real	0m56.066s
+user	7m29.903s
+sys	1m44.003s
+```
+
+Merged mapping
+```
+
+```
+
+PE mapping
+```
+time bs_seeker2-align.py \
+--aligner=bowtie2 --bt2--end-to-end --bt2-p 10 -e 300 -X 2000 \
+--temp_dir=/scratchfs/sbuckberry/tmp \
+--split_line=4000000 \
+-1 test_WGBS_10M_reads_R1_trimmed_bbduk_unmerged.fastq.gz \
+-2 test_WGBS_10M_reads_R2_trimmed_bbduk_unmerged.fastq.gz \
+-o test_WGBS_10M_reads_trimmed_bbduk_unmerged.bam \
+-d /home/sbuckberry/working_data_01/genomes/hg19_bsseeker_bt2_index/ \
+-g hg19_L_PhiX.fa
+```
+
+SE mapping
+```
+time bs_seeker2-align.py \
+--aligner=bowtie2 --bt2--end-to-end --bt2-p 10 -e 400 \
+--temp_dir=/scratchfs/sbuckberry/tmp \
+-i test_WGBS_10M_reads_trimmed_bbduk_merged.fastq.gz \
+-o test_WGBS_10M_reads_trimmed_bbduk_merged.bam \
+-d /home/sbuckberry/working_data_01/genomes/hg19_bsseeker_bt2_index/ \
+-g hg19_L_PhiX.fa
+```
+
+Read clipping
+```
+
+```
+
 ---
 #### fastp
 
@@ -156,6 +224,31 @@ time bs_seeker2-align.py \
 -g hg19_L_PhiX.fa
 ```
 
+```
+[2020-12-09 17:44:51] --------------------------------
+[2020-12-09 17:44:51] Number of raw BS-read pairs: 9886490
+[2020-12-09 17:44:51] Number of bases in total: 2214573760
+[2020-12-09 17:44:51] Number of reads rejected because of multiple hits: 16276
+[2020-12-09 17:44:51] Number of unique-hits reads (before post-filtering): 8397733
+
+[2020-12-09 17:44:51]   4200888 FW-RC pairs mapped to Watson strand (before post-filtering)
+[2020-12-09 17:44:51]   4196845 FW-RC pairs mapped to Crick strand (before post-filtering)
+[2020-12-09 17:44:51]   8032780 uniquely aligned pairs, where each end has mismatches <= 4
+[2020-12-09 17:44:51]   4014918 FW-RC pairs mapped to Watson strand
+[2020-12-09 17:44:51]   4017862 FW-RC pairs mapped to Crick strand
+[2020-12-09 17:44:51] Mappability = 81.2501%
+[2020-12-09 17:44:51] Total bases of uniquely mapped reads : 1799342720
+[2020-12-09 17:44:51] Unmapped read pairs: 1853710
+
+[2020-12-09 17:44:51] --------------------------------
+[2020-12-09 17:44:51] Methylated C in mapped reads
+[2020-12-09 17:44:51]  mCG  78.598%
+[2020-12-09 17:44:51]  mCHG 1.773%
+[2020-12-09 17:44:51]  mCHH 0.831%
+[2020-12-09 17:44:51] --------------------------------
+
+```
+
 #### fastp trimmed reads
 ```
 time bs_seeker2-align.py \
@@ -167,4 +260,28 @@ time bs_seeker2-align.py \
 -o test_WGBS_10M_reads_trimmed_fastp.bam \
 -d /home/sbuckberry/working_data_01/genomes/hg19_bsseeker_bt2_index/ \
 -g hg19_L_PhiX.fa
+```
+
+```
+[2020-12-09 17:24:44] --------------------------------
+[2020-12-09 17:24:44] Number of raw BS-read pairs: 9995219
+[2020-12-09 17:24:44] Number of bases in total: 2218696873
+[2020-12-09 17:24:44] Number of reads rejected because of multiple hits: 17926
+[2020-12-09 17:24:44] Number of unique-hits reads (before post-filtering): 8913070
+
+[2020-12-09 17:24:44]   4458315 FW-RC pairs mapped to Watson strand (before post-filtering)
+[2020-12-09 17:24:44]   4454755 FW-RC pairs mapped to Crick strand (before post-filtering)
+[2020-12-09 17:24:44]   8544257 uniquely aligned pairs, where each end has mismatches <= 4
+[2020-12-09 17:24:44]   4270577 FW-RC pairs mapped to Watson strand
+[2020-12-09 17:24:44]   4273680 FW-RC pairs mapped to Crick strand
+[2020-12-09 17:24:44] Mappability = 85.4834%
+[2020-12-09 17:24:44] Total bases of uniquely mapped reads : 1897778877
+[2020-12-09 17:24:44] Unmapped read pairs: 1450962
+
+[2020-12-09 17:24:44] --------------------------------
+[2020-12-09 17:24:44] Methylated C in mapped reads
+[2020-12-09 17:24:44]  mCG  78.442%
+[2020-12-09 17:24:44]  mCHG 1.773%
+[2020-12-09 17:24:44]  mCHH 0.832%
+[2020-12-09 17:24:44] --------------------------------
 ```
