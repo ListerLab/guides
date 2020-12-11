@@ -129,6 +129,45 @@ time bs_seeker2-align.py \
 -g hg19_L_PhiX.fa
 ```
 
+```
+[2020-12-10 15:48:09] Number of raw BS-read pairs: 4854816
+[2020-12-10 15:48:09] Number of bases in total: 1087478784
+[2020-12-10 15:48:09] Number of reads rejected because of multiple hits: 12347
+[2020-12-10 15:48:09] Number of unique-hits reads (before post-filtering): 4181802
+
+[2020-12-10 15:48:09]   2091077 FW-RC pairs mapped to Watson strand (before post-filtering)
+[2020-12-10 15:48:09]   2090725 FW-RC pairs mapped to Crick strand (before post-filtering)
+[2020-12-10 15:48:09]   3921872 uniquely aligned pairs, where each end has mismatches <= 4
+[2020-12-10 15:48:09]   1959260 FW-RC pairs mapped to Watson strand
+[2020-12-10 15:48:09]   1962612 FW-RC pairs mapped to Crick strand
+[2020-12-10 15:48:09] Mappability = 80.7831%
+[2020-12-10 15:48:09] Total bases of uniquely mapped reads : 878499328
+[2020-12-10 15:48:09] Unmapped read pairs: 932944
+```
+
+Sort the BAM
+```
+sambamba sort -t 12 test_WGBS_10M_reads_trimmed_bbduk_unmerged.bam
+```
+
+Clip the overlapping pairs
+```
+bam clipOverlap --stats \
+--in test_WGBS_10M_reads_trimmed_bbduk_unmerged.sorted.bam \
+--out test_WGBS_10M_reads_trimmed_bbduk_unmerged_clipped.bam
+```
+
+```
+Overlap Statistics:
+Number of overlapping pairs: 569467
+Average # Reference Bases Overlapped: 13.874
+Variance of Reference Bases overlapped: 320.008
+Number of times orientation causes additional clipping: 0
+Number of times the forward strand was clipped: 284535
+Number of times the reverse strand was clipped: 284932
+```
+
+
 SE mapping
 ```
 time bs_seeker2-align.py \
@@ -140,11 +179,33 @@ time bs_seeker2-align.py \
 -g hg19_L_PhiX.fa
 ```
 
-Read clipping
+```
+[2020-12-10 15:58:47] Number of raw reads: 5031674
+[2020-12-10 15:58:47] Number of bases in total: 789441816
+[2020-12-10 15:58:47] Number of reads are rejected because of multiple hits: 569
+[2020-12-10 15:58:47] Number of unique-hits reads (before post-filtering): 4641429
+[2020-12-10 15:58:47]   2322055 FW reads mapped to Watson strand (before post-filtering)
+[2020-12-10 15:58:47]   2319374 FW reads mapped to Crick strand (before post-filtering)
+[2020-12-10 15:58:47] Post-filtering 4500924 uniquely aligned reads with mismatches <= 4
+[2020-12-10 15:58:47]   2250495 FW reads mapped to Watson strand
+[2020-12-10 15:58:47]   2250429 FW reads mapped to Crick strand
+[2020-12-10 15:58:47] Mappability = 89.4518%
+[2020-12-10 15:58:47] Total bases of uniquely mapped reads : 706825215
 ```
 
+merge the BAM files before postmap
+```
+sambamba merge -t 12 test_WGBS_10M_reads_final.bam test_WGBS_10M_reads_trimmed_bbduk_merged.bam test_WGBS_10M_reads_trimmed_bbduk_unmerged_clipped.bam
 ```
 
+
+
+
+```
+/home/sbuckberry/working_data_01/bin/cgmaptools/cgmaptools convert bam2cgmap -b test_WGBS_10M_reads_trimmed_bbduk_unmerged.bam \
+-g /home/sbuckberry/working_data_01/genomes/hg19_bsseeker_bt2_index/hg19_L_PhiX.fa \
+-o test_WGBS_10M_reads_trimmed_bbduk_unmerged
+```
 ---
 #### fastp
 
