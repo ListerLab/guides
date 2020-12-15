@@ -2,8 +2,10 @@
 
 #--- Script to run basemount download
 
-run_id=$1
+run_path=$1
 target_path=$2
+
+#run_path=/d/home/hg19ips/hg19ips_samb/mcc_hg19ips/baseSpace/Runs/methC_ATAC_DP_SB_Lister_2020_12_14/Files/
 
 #anchor dock directory for basemount
 ad=/d/home/hg19ips/hg19ips_samb/mcc_hg19ips/baseSpace
@@ -16,10 +18,10 @@ module use /p9/mcc_hg19ips/sw/modules
 module add basemount
 
 # Mount to the anchor dock directory
-basemount "$ad"
+basemount -c perkins_basespace.cfg "$ad"
 
 # Download the data using rsync
-rsync -ahPr --exclude Thumbnail_Images "$ad"/Runs/"$run_id"/Files/* "$target_path" > "$target_path"/copy.log
+rsync -ahPr --exclude Thumbnail_Images "$run_path"/* "$target_path" > "$target_path"/copy.log
 
 # unmount
 basemount --unmount "$ad"
