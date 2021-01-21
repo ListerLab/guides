@@ -33,8 +33,8 @@ screen -S basemount
 ```
 module use /p9/mcc_hg19ips/sw/modules
 module add basemount
-basemountPath=/p9/mcc_hg19ips/basemount
-basemount "$basemountPath"
+basemountPath=/p9/mcc_hg19ips/baseSpace
+basemount -c perkins_basespace.cfg "$basemountPath"
 
 ```
 
@@ -84,6 +84,14 @@ Exclude the thumbnail images. Save the log file as `copy.log` and point to the r
 ```
 rsync -ahPr --exclude Thumbnail_Images * /dd_rundata/novaseq/Runs/191011_A00690_HL7HLDMXX_010 > /dd_rundata/novaseq/Runs/191011_A00690_HL7HLDMXX_010/copy.log
 ```
+
+
+```
+rsync -ahPr /d/home/hg19ips/hg19ips_samb/mcc_hg19ips/baseSpace/Runs/methylC_SB_DP_Lister_2020_12_31_300/Properties/Output.Samples/*/Files/*.fastq.gz /d/home/hg19ips/hg19ips_samb/mcc_hg19ips/data/unaligned/201231_A00690_0099_AHYNWNDRXX > /d/home/hg19ips/hg19ips_samb/mcc_hg19ips/data/unaligned/201231_A00690_0099_AHYNWNDRXX/copy.log &
+
+rsync -ahPr /d/home/hg19ips/hg19ips_samb/mcc_hg19ips/baseSpace/Runs/methylC_SB_DP_Lister_2020_12_31_200/Properties/Output.Samples/*/Files/*.fastq.gz /d/home/hg19ips/hg19ips_samb/mcc_hg19ips/data/unaligned/201231_A00690_0098_BHJFTGDRXX > /d/home/hg19ips/hg19ips_samb/mcc_hg19ips/data/unaligned/201231_A00690_0098_BHJFTGDRXX/copy.log
+```
+
 
 ### 7. Monitor the download by checking the copy.log. You can do this the following way
 
