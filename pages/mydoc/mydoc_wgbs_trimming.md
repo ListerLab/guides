@@ -35,7 +35,7 @@ literal="AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC,AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGA
 
 bbduk trimming results:
 ```
-Input:                  	20000000 reads 		2240000000 bases.
+Input:                  	20000000 reads 		 bases.
 Contaminants:           	227020 reads (1.14%) 	25426240 bases (1.14%)
 Total Removed:          	227020 reads (1.14%) 	25426240 bases (1.14%)
 Result:                 	19772980 reads (98.86%) 	2214573760 bases (98.86%)
@@ -157,6 +157,21 @@ bam clipOverlap --stats \
 --out test_WGBS_10M_reads_trimmed_bbduk_unmerged_clipped.bam
 ```
 
+Unclipped stats (samtools stats)
+```
+SN      bases mapped (cigar):   878499328       # more accurate
+```
+
+Clipped stats
+```
+SN      bases mapped (cigar):   870597141
+```
+
+
+```
+sambamba sort test_WGBS_10M_reads_trimmed_bbduk_unmerged_clipped.bam
+```
+
 ```
 Overlap Statistics:
 Number of overlapping pairs: 569467
@@ -193,18 +208,28 @@ time bs_seeker2-align.py \
 [2020-12-10 15:58:47] Total bases of uniquely mapped reads : 706825215
 ```
 
+```
+sambamba sort test_WGBS_10M_reads_trimmed_bbduk_merged.bam
+```
+
 merge the BAM files before postmap
 ```
-sambamba merge -t 12 test_WGBS_10M_reads_final.bam test_WGBS_10M_reads_trimmed_bbduk_merged.bam test_WGBS_10M_reads_trimmed_bbduk_unmerged_clipped.bam
+sambamba merge -t 12 test_WGBS_10M_reads_final.bam test_WGBS_10M_reads_trimmed_bbduk_merged.sorted.bam test_WGBS_10M_reads_trimmed_bbduk_unmerged_clipped.bam
 ```
 
-
-
+```
+samtools stats --threads 12 test_WGBS_10M_reads_final.bam
+```
 
 ```
-/home/sbuckberry/working_data_01/bin/cgmaptools/cgmaptools convert bam2cgmap -b test_WGBS_10M_reads_trimmed_bbduk_unmerged.bam \
+SN      bases mapped (cigar):   1577422356
+```
+
+Postmap
+```
+/home/sbuckberry/working_data_01/bin/cgmaptools/cgmaptools convert bam2cgmap -b test_WGBS_10M_reads_final.bam \
 -g /home/sbuckberry/working_data_01/genomes/hg19_bsseeker_bt2_index/hg19_L_PhiX.fa \
--o test_WGBS_10M_reads_trimmed_bbduk_unmerged
+-o test_WGBS_10M_reads_final
 ```
 ---
 #### fastp
@@ -310,6 +335,29 @@ time bs_seeker2-align.py \
 
 ```
 
+```
+sambamba sort test_WGBS_10M_reads_trimmed_bbduk.bam
+```
+
+Clip the overlapping pairs
+```
+bam clipOverlap --stats \
+--in  test_WGBS_10M_reads_trimmed_bbduk.sorted.bam \
+--out test_WGBS_10M_reads_trimmed_bbduk_clipped.bam
+```
+
+```
+samtools stats test_WGBS_10M_reads_trimmed_bbduk_clipped.bam > test_WGBS_10M_reads_trimmed_bbduk_clipped.stats
+```
+
+
+
+
+```
+test_WGBS_10M_reads_trimmed_bbduk.bam
+```
+
+
 #### fastp trimmed reads
 ```
 time bs_seeker2-align.py \
@@ -345,4 +393,20 @@ time bs_seeker2-align.py \
 [2020-12-09 17:24:44]  mCHG 1.773%
 [2020-12-09 17:24:44]  mCHH 0.832%
 [2020-12-09 17:24:44] --------------------------------
+```
+
+
+```
+sambamba sort test_WGBS_10M_reads_trimmed_fastp.bam
+```
+
+Clip the overlapping pairs
+```
+bam clipOverlap --stats \
+--in  test_WGBS_10M_reads_trimmed_fastp.sorted.bam \
+--out test_WGBS_10M_reads_trimmed_fastp_clipped.bam
+```
+
+```
+samtools stats test_WGBS_10M_reads_trimmed_fastp_clipped.sorted.bam > test_WGBS_10M_reads_trimmed_fastp_clipped.sorted.stats
 ```
