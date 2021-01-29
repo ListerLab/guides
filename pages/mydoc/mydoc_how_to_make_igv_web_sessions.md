@@ -14,7 +14,7 @@ last_updated: December 1, 2020
 
 The first step is to upload your browser track files (bigwig, gtf, bed, etc) to Google Cloud. We use this platform as the files as be easily and quicky accessed by the IGV web application without any firewall or security issues.  
 
-**See the short guide here:** [How to upload data to Google Cloud using the command line](uploading_to_google_cloud.md)
+**See the short guide here:** [How to upload data to Google Cloud using the command line](https://listerlab.github.io/guides/data-transfer-gcs.html)
 
 Once all of your data are uploaded to google cloud, and you have the links to your data, you can move onto the next step.
 
@@ -146,7 +146,7 @@ This is all it takes once you are setup with the Google Sheet in the right forma
 
 Download the script
 ```
-wget https://github.com/ListerLab/lab_guides/blob/master/scripts/R/make_igv_json.R
+wget https://github.com/ListerLab/guides/blob/master/scripts/R/make_igv_json.R
 ```
 
 Execute the script
