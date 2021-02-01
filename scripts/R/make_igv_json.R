@@ -37,6 +37,7 @@ gs4_deauth() # ensures google does not need authentication to read sheet
 mdat <- read_sheet(gsheet_path, col_types = "cccclccccilciiic")
 mdat <- data.frame(mdat)
 
+
 # Subset data based on T/F for include in browser column
 mdat <- mdat[mdat$Include_in_browser, ]
 
