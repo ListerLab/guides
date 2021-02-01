@@ -98,8 +98,8 @@ Firstly, for this script to run, you need to have the R packages `RJSONIO` and `
 To install these packages, open your terminal application and type `R` to open an R terminal session. Then at the R prompt, install the required packages. You should only need to do this once.
 
 ```
-library(RJSONIO)
-library(googlesheets4)
+install.packages("RJSONIO")
+install.packages("googlesheets4")
 ```
 And now exit the R terminal by using the quit command
 
@@ -110,16 +110,18 @@ quit()
 Now these packages are installed, you should be able to run the `make_igv_json.R` script from the terminal prompt (not in R) with the following arguments:
 
 ```
-Rscript make_igv_json.R <"URL"> <your_igv_session_path.json>
+Rscript make_igv_json.R <"URL"> <your_igv_session_path.json> <reference_genome>
 ```
 
 `URL` This argument is the link to the google sheet with all of the track information. The link must be enclosed by quotes (see below).
 
 `your_igv_session_path.json` The path to where you want to save the IGV session file.
 
+`reference_genome` The name of the reference genome used. Currently supports `hg19` and `mm10`
+
 For example:
 ```
-Rscript make_igv_json.R "https://docs.google.com/spreadsheets/d/1MH99chxD6R3MH-BUoaxz4Ke1VGQ6q5YXZDBrtkX4hfg/edit?usp=sharing" my_igv_test_session.json
+Rscript make_igv_json.R "https://docs.google.com/spreadsheets/d/1MH99chxD6R3MH-BUoaxz4Ke1VGQ6q5YXZDBrtkX4hfg/edit?usp=sharing" my_igv_test_session.json hg19
 ```
 
 ---
@@ -151,5 +153,5 @@ wget https://github.com/ListerLab/guides/blob/master/scripts/R/make_igv_json.R
 
 Execute the script
 ```
-Rscript make_igv_json.R "https://docs.google.com/spreadsheets/d/1MH99chxD6R3MH-BUoaxz4Ke1VGQ6q5YXZDBrtkX4hfg/edit?usp=sharing" my_igv_test_session.json
+Rscript make_igv_json.R "https://docs.google.com/spreadsheets/d/1MH99chxD6R3MH-BUoaxz4Ke1VGQ6q5YXZDBrtkX4hfg/edit?usp=sharing" my_igv_test_session.json hg19
 ```
