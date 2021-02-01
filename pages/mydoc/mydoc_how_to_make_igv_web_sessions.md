@@ -87,7 +87,7 @@ Once you have created your sheet, you will need to enable sharing to generate th
 
 First, download the R script linked below by clicking the link.
 
-<a href="scripts/R/make_igv_json.R" download>Click to Download "make_igv_json.R"</a>  
+<a href="https://listerlab.github.io/guides/scripts/R/make_igv_json.R" download>Click to Download "make_igv_json.R"</a>  
 
 Remember where you have saved this script so you can call it from the command line on your computer.
 
