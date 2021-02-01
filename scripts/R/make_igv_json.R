@@ -7,7 +7,7 @@ args <- commandArgs(TRUE)
 # Path to Google Sheet. Link should be made public
 gsheet_path <- args[1]
 
-# Specify reference genome. 
+# Specify reference genome.
 genome <- args[2]
 genome <- as.character(genome)
 
@@ -33,14 +33,14 @@ out_path <- args[2]
 
 # Read the google sheet data
 gs4_deauth() # ensures google does not need authentication to read sheet
-gsheet_path <- "https://docs.google.com/spreadsheets/d/1MH99chxD6R3MH-BUoaxz4Ke1VGQ6q5YXZDBrtkX4hfg/edit#gid=74417971"
+#gsheet_path <- "https://docs.google.com/spreadsheets/d/1MH99chxD6R3MH-BUoaxz4Ke1VGQ6q5YXZDBrtkX4hfg/edit#gid=74417971"
 mdat <- read_sheet(gsheet_path, col_types = "cccclccccilciiic")
 mdat <- data.frame(mdat)
 
 # Subset data based on T/F for include in browser column
 mdat <- mdat[mdat$Include_in_browser, ]
 
-# Remove rows with no links. 
+# Remove rows with no links.
 mdat <- mdat[!is.na(mdat$url), ]
 
 message("##############")
@@ -124,32 +124,32 @@ tracks <- start_json$tracks
 # Function to make tracks info
 make_json <- function(x, filename=out_path, sourceType="file",
                       priority_offset=0, noSpinner=TRUE){
-    
+
     new_track <- mdat[x, ]
-    
+
     # Set track name
     name <- as.character(new_track$track_name)
-    
+
     # Set file path
     url <- as.character(new_track$url)
-    
+
     # Set track order
     order <- new_track$order + priority_offset
-    
+
     # Construct the output
     new_track_info <- list(name=name, filename=filename, format=new_track$format,
                            url=url, sourceType=sourceType,
-                           type=new_track$type, noSpinner=noSpinner, 
+                           type=new_track$type, noSpinner=noSpinner,
                            color=new_track$color,
-                           height=new_track$height, autoscale=new_track$autoscale, 
+                           height=new_track$height, autoscale=new_track$autoscale,
                            autoscaleGroup=new_track$autoscaleGroup,
                            min=new_track$min, max=new_track$max,
                            order=new_track$order+priority_offset)
     return(new_track_info)
-    
+
 }
 
-### Make tracks 
+### Make tracks
 data_tracks <- lapply(X = 1:nrow(mdat), FUN = make_json)
 all_tracks <- c(tracks, data_tracks)
 start_json$tracks <- all_tracks
