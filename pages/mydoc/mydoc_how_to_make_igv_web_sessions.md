@@ -7,7 +7,7 @@ sidebar: mydoc_sidebar
 folder: browser
 permalink: igv_web_gcs.html
 author: Sam Buckberry
-last_updated: December 1, 2020
+last_updated: February 1, 2021
 ---
 
 ### 1. Upload browser tracks to Google Cloud
