@@ -1,0 +1,130 @@
+{
+	"reference" : {
+		"id" : "hg19",
+		"name" : "Human (CRCh37/hg19)",
+		"fastaURL" : "https://s3.dualstack.us-east-1.amazonaws.com/igv.broadinstitute.org/genomes/seq/hg19/hg19.fasta",
+		"indexURL" : "https://s3.dualstack.us-east-1.amazonaws.com/igv.broadinstitute.org/genomes/seq/hg19/hg19.fasta.fai",
+		"cytobandURL" : "https://s3.dualstack.us-east-1.amazonaws.com/igv.broadinstitute.org/genomes/seq/hg19/cytoBand.txt"
+	},
+	"tracks" : [
+		{
+			"type" : "sequence",
+			"order" : -1.797693e+308,
+			"noSpinner" : true
+		},
+		{
+			"name" : "Refseq Genes",
+			"format" : "refgene",
+			"url" : "https://s3.dualstack.us-east-1.amazonaws.com/igv.org.genomes/hg19/refGene.sorted.txt.gz",
+			"indexURL" : "https://s3.dualstack.us-east-1.amazonaws.com/igv.org.genomes/hg19/refGene.sorted.txt.gz.tbi",
+			"visibilityWindow" : -1,
+			"removable" : false,
+			"order" : 1,
+			"noSpinner" : true,
+			"filename" : "refGene.sorted.txt.gz",
+			"sourceType" : "file",
+			"type" : "annotation",
+			"maxRows" : 500,
+			"filterTypes" : [
+				"chromosome",
+				"gene"
+			]
+		},
+		{
+			"name" : "Reg_elements",
+			"filename" : "test.json",
+			"format" : "bed",
+			"url" : "gs://human-reprogramming-browser/hg19_USCS_geneHancerRegElements.bed",
+			"sourceType" : "file",
+			"type" : "annotation",
+			"noSpinner" : true,
+			"color" : null,
+			"height" : 40,
+			"autoscale" : false,
+			"autoscaleGroup" : "A",
+			"min" : 0,
+			"max" : 0,
+			"order" : 4
+		},
+		{
+			"name" : "Fib_PMD",
+			"filename" : "test.json",
+			"format" : "bed",
+			"url" : "gs://human-reprogramming-browser/fibroblast_32F_PMD.bed",
+			"sourceType" : "file",
+			"type" : "annotation",
+			"noSpinner" : true,
+			"color" : null,
+			"height" : 40,
+			"autoscale" : false,
+			"autoscaleGroup" : "A",
+			"min" : 0,
+			"max" : 0,
+			"order" : 2
+		},
+		{
+			"name" : "Fib_LaminB1",
+			"filename" : "test.json",
+			"format" : "bigwig",
+			"url" : "gs://human-reprogramming-browser/4DNFI6EVXIWL_hg19.bigwig",
+			"sourceType" : "file",
+			"type" : "wig",
+			"noSpinner" : true,
+			"color" : "#00CCCC",
+			"height" : 40,
+			"autoscale" : true,
+			"autoscaleGroup" : "B",
+			"min" : -3,
+			"max" : 3,
+			"order" : 5
+		},
+		{
+			"name" : "Fib_32F_mCG",
+			"filename" : "test.json",
+			"format" : "bigwig",
+			"url" : "gs://human-reprogramming-browser/RL415_D0_32F_HDFa.rmdup.CGmap_mCG_levels.bigwig",
+			"sourceType" : "file",
+			"type" : "wig",
+			"noSpinner" : true,
+			"color" : "#0072B2",
+			"height" : 40,
+			"autoscale" : false,
+			"autoscaleGroup" : "C",
+			"min" : 0,
+			"max" : 1,
+			"order" : 10
+		},
+		{
+			"name" : "Fib_H3K9me3",
+			"filename" : "test.json",
+			"format" : "bigwig",
+			"url" : "gs://human-reprogramming-browser/ENCFF735TXC.bigWig",
+			"sourceType" : "file",
+			"type" : "wig",
+			"noSpinner" : true,
+			"color" : "#FF9933",
+			"height" : 40,
+			"autoscale" : true,
+			"autoscaleGroup" : "5",
+			"min" : 0,
+			"max" : 1,
+			"order" : 102
+		},
+		{
+			"name" : "Fib_32F_mCA",
+			"filename" : "test.json",
+			"format" : "bigwig",
+			"url" : "gs://human-reprogramming-browser/d0_mCA_5kb_slide_window.bigwig",
+			"sourceType" : "file",
+			"type" : "wig",
+			"noSpinner" : true,
+			"color" : "#CC99FF",
+			"height" : 40,
+			"autoscale" : true,
+			"autoscaleGroup" : "7",
+			"min" : 0,
+			"max" : 1,
+			"order" : 301
+		}
+	]
+}
