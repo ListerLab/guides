@@ -5,10 +5,18 @@ library(googlesheets4)
 args <- commandArgs(TRUE)
 
 # Path to Google Sheet. Link should be made public
+gsheet_path <- "https://docs.google.com/spreadsheets/d/1MH99chxD6R3MH-BUoaxz4Ke1VGQ6q5YXZDBrtkX4hfg/edit#gid=74417971"
+
 gsheet_path <- args[1]
 
+# Out path to json file for loading into IGV
+out_path <- "test.json"
+out_path <- args[2]
+
 # Specify reference genome.
-genome <- args[2]
+genome <- "hg19"
+
+genome <- args[3]
 genome <- as.character(genome)
 
 supported_genomes <- c("hg19", "mm10")
@@ -28,12 +36,9 @@ stopifnot(genome_pass)
 
 message("##############")
 
-# Out path to json file for loading into IGV
-out_path <- args[2]
 
 # Read the google sheet data
 gs4_deauth() # ensures google does not need authentication to read sheet
-#gsheet_path <- "https://docs.google.com/spreadsheets/d/1MH99chxD6R3MH-BUoaxz4Ke1VGQ6q5YXZDBrtkX4hfg/edit#gid=74417971"
 mdat <- read_sheet(gsheet_path, col_types = "cccclccccilciiic")
 mdat <- data.frame(mdat)
 
