@@ -57,14 +57,6 @@ entries:
       output: web, pdf
       type: homepage
 
-  - title: Plotting data
-    output: web, pdf
-
-    folderitems:
-    - title: Pages
-      url: /mydoc_pages.html
-      output: web, pdf
-
   - title: Genome files
     output: web, pdf
 
