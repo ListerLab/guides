@@ -8,3 +8,5 @@ vendor/
 .bundle/
 .Rproj.user
 guides.Rproj
+.Rhistory
+.RData
