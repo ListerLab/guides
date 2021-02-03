@@ -148,7 +148,7 @@ This is all it takes once you are setup with the Google Sheet in the right forma
 
 Download the script
 ```
-wget https://github.com/ListerLab/guides/blob/master/scripts/R/make_igv_json.R
+wget https://listerlab.github.io/guides/scripts/R/make_igv_json.R
 ```
 
 Execute the script
