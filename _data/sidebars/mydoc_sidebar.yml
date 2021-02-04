@@ -57,6 +57,14 @@ entries:
       output: web, pdf
       type: homepage
 
+  - title: ATAC-seq
+    output: web, pdf
+
+    folderitems:
+    - title: How to plot ATAC insert histograms
+      url: /atac_histogram.html
+      output: web, pdf
+
   - title: Genome files
     output: web, pdf
 
