@@ -1,5 +1,5 @@
 ---
-title: "How to calculate and plot ATAC-seq insert sizes"
+title: "Plotting ATAC-seq insert sizes"
 tags: [ATAC-seq, R]
 keywords: ATAC-seq, histogram, R, samtools
 summary: "The goal of this guide is to assist plotting insert size histograms of from aligned ATAC-seq data for the purposes of quality control."
