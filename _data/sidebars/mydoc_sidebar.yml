@@ -61,7 +61,7 @@ entries:
     output: web, pdf
 
     folderitems:
-    - title: How to plot ATAC insert histograms
+    - title: Plotting ATAC insert histograms
       url: /atac_histogram.html
       output: web, pdf
 
