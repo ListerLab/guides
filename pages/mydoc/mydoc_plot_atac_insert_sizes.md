@@ -12,9 +12,13 @@ last_updated: February 4, 2021
 
 ### The fast way
 
-Download and R script and test BAM file
+Download an R script that will generate the histogram plotsand
 ```
 wget https://listerlab.github.io/guides/scripts/R/plot_atac_insert_sizes.R
+```
+
+Download a test ATAC-seq BAM file
+```
 wget https://listerlab.github.io/guides/test_data/test.bam
 ```
 
