@@ -76,6 +76,7 @@ plot(dens, xlim = c(0,800),
 
 
 ### The code in the R script
+
 ```{r}
 ## Set command line arguments
 args <- commandArgs(TRUE)
