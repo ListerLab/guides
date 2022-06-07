@@ -14,12 +14,12 @@ out_path <- "test.json"
 out_path <- args[2]
 
 # Specify reference genome.
-genome <- "hg19"
+genome <- "hg38"
 
 genome <- args[3]
 genome <- as.character(genome)
 
-supported_genomes <- c("hg19", "mm10")
+supported_genomes <- c("hg19", "mm10", "hg38")
 
 genome_pass <- genome %in% supported_genomes
 
@@ -50,13 +50,13 @@ mdat <- mdat[mdat$Include_in_browser, ]
 mdat <- mdat[!is.na(mdat$url), ]
 
 message("##############")
-message("Creating hg19 IGV session file...")
+message("Creating IGV session file...")
 message("##############")
 
 # setup for human hg19
 hg19_seed <- c('{"reference": {
 		"id": "hg19",
-		"name": "Human (CRCh37/hg19)",
+		"name": "Human (GRCh37/hg19)",
 		"fastaURL": "https://s3.dualstack.us-east-1.amazonaws.com/igv.broadinstitute.org/genomes/seq/hg19/hg19.fasta",
 		"indexURL": "https://s3.dualstack.us-east-1.amazonaws.com/igv.broadinstitute.org/genomes/seq/hg19/hg19.fasta.fai",
 		"cytobandURL": "https://s3.dualstack.us-east-1.amazonaws.com/igv.broadinstitute.org/genomes/seq/hg19/cytoBand.txt"
@@ -112,6 +112,39 @@ mm10_seed <- c('{
 	]
 }')
 
+# setup for human hg38
+hg38_seed <- c('{
+	"version": "2.12.6",
+	"showSampleNames": false,
+	"reference": {
+		"id": "hg38",
+		"name": "Human (GRCh38/hg38)",
+		"fastaURL": "https://s3.amazonaws.com/igv.broadinstitute.org/genomes/seq/hg38/hg38.fa",
+		"indexURL": "https://s3.amazonaws.com/igv.broadinstitute.org/genomes/seq/hg38/hg38.fa.fai",
+		"cytobandURL": "https://s3.amazonaws.com/igv.org.genomes/hg38/annotations/cytoBandIdeo.txt.gz",
+		"aliasURL": "https://s3.amazonaws.com/igv.org.genomes/hg38/hg38_alias.tab",
+		"chromosomeOrder": "chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12, chr13, chr14, chr15, chr16, chr17, chr18, chr19, chr20, chr21, chr22, chrX, chrY"
+	},
+	"tracks": [
+		{
+			"type": "sequence",
+			"order": -9007199254740991
+		},
+		{
+			"name": "Refseq Genes",
+			"format": "refgene",
+			"url": "https://s3.amazonaws.com/igv.org.genomes/hg38/ncbiRefSeq.txt.gz",
+			"indexURL": "https://s3.amazonaws.com/igv.org.genomes/hg38/ncbiRefSeq.txt.gz.tbi",
+			"visibilityWindow": -1,
+			"supportsWholeGenome": false,
+			"removable": false,
+			"order": 1000000,
+			"infoURL": "https://www.ncbi.nlm.nih.gov/gene/?term=$$",
+			"type": "annotation"
+		}
+	]
+}')
+
 
 # Set json seed based on argument 2
 
@@ -121,6 +154,8 @@ if (genome == "hg19"){
     seed <- hg19_seed
 } else if (genome == "mm10"){
     seed <- mm10_seed
+} else if (genome == "hg38"){
+    seed <- hg38_seed
 }
 
 
